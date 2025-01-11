@@ -15,7 +15,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const chartData = await calculateChart({
+    const chartData = calculateChart({
       birthDate,
       birthTime,
       latitude: Number(latitude),
