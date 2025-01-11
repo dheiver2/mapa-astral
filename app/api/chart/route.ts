@@ -1,13 +1,13 @@
 // app/api/chart/route.ts
 import { NextResponse } from 'next/server';
-import { calculateChart } from '@/app/lib/astrology';
+import { calculateChart } from '../../lib/astrology';
+import { BirthFormData } from '@/app/components/AstralChart/types';
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    const body = await request.json() as BirthFormData;
     const { birthDate, birthTime, latitude, longitude } = body;
 
-    // Validação básica
     if (!birthDate || !birthTime || !latitude || !longitude) {
       return NextResponse.json(
         { error: 'Todos os campos são obrigatórios' },
